@@ -1,0 +1,55 @@
+#addpopup{
+    display: none;
+    position: fixed;   
+    left: 34.5vw; 
+    top: 25vh;
+
+    width: 500px;
+    background: transparent wheat;
+    border: 2px solid rgb(179, 176, 176);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
+    color: white;
+    border-radius: 10px;
+    padding: 30px 40px ;
+
+}
+
+
+#deletepopup{
+    display: none;
+    /* height: 50vh;
+    width: 50vw; */
+    position: fixed;   
+    left: 34.3vw; 
+    top: 36vh;
+    /* background-color: gray; */
+    width: 500px;
+    background: transparent;
+    border: 2px solid rgb(179, 176, 176);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
+    color: white;
+    border-radius: 10px;
+    padding: 30px 40px ;
+}
+
+
+.updatepopup{
+    position: fixed;   
+    left: 34.3vw; 
+    top: 25vh;
+
+    width: 500px;
+    background: transparent;
+    border: 2px solid rgb(179, 176, 176);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+
+    color: white;
+    border-radius: 10px;
+    padding: 30px 40px ;
+
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Collage</title>
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.css' %}">  
+    <link rel="stylesheet" href="{% static 'CSS/popup.css' %}">  
+
+     <style>
+        body{
+            background: url("{% static 'images/school1.jpg' %}" )no-repeat;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+
+}
+
+              
+        
+     </style>
+
+</head>
+<body>
+
+    <nav class="navbar fixed-top" style="background-color: rgb(30, 39, 54); height: 100px;">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" style="margin-left: 30px;"> 
+                <img src="{% static 'images/school.jpg' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Tech College 
+            </a>
+    
+            <div class="nav">
+                <a href="{% url 'home' %}" class="nav-link">HOME</a>
+                <a href="{% url 'department' %}" class="nav-link">DEPARTMENTS</a>
+                <a href="{% url 'hod' %}" class="nav-link">HODs</a>
+                <a href="{% url 'professor' %}" class="nav-link">PROFESSORS</a>
+                <a href="{% url 'student' %}" class="nav-link">STUDENTS</a>
+            </div>          
+        </div>
+    </nav>
+    
+    <style>
+        .nav {
+            display: flex;
+            gap: 20px; 
+            margin-right: 60px;
+        }
+       
+        .nav a {
+            color: white; 
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: color 0.3s ease-in-out;
+        }
+    
+        .nav a:hover {
+            color: rgb(173, 216, 230); 
+        }
+    </style>
+
+            {% block content %} {% endblock content %}
+
+    <script src="{% static 'JS/bootstrap.js' %}"></script>
+    <script src="{% static 'JS/jquery.js' %}"></script>
+    <script src="{% static 'JS/popper.js' %}"></script>
+
+
+
+</body>
+</html> 

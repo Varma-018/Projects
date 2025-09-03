@@ -1,0 +1,100 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+<div class="container" style=" margin-top: 200px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="d-flex" method="GET" >
+                <input class="form-control me-2" type="search" placeholder="Search"  name="search" id="search">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <div class="container justify-content-center align-items-center" style=" margin-top: 80px; padding-left: 25%;">
+        <button  class="btn btn-info mb-3" onclick="addpopup()" >Add Department</button>
+        {% if fm %}
+        <div id = "addpopup">
+        <form    action="" method="POST">
+            <a href="{% url 'department' %}" class="btn" style="margin-left: 100%; margin-top:-50px; color: white; font-size: 20px;">X</a>
+
+            <h3 class="text-center text-white">Add Department</h3>
+            {% csrf_token %}
+            {{fm.as_p}}
+            <input type="submit" class="btn btn-info" value="Add Department" style="margin-left: 35%;">
+        </form>
+        </div>
+
+        <script>
+            function addpopup(){
+                var popup = document.getElementById("addpopup")
+                if (popup.style.display=='block'){
+                    popup.style.display ='none'
+                    return false
+                }else{
+                    popup.style.display = 'block'
+                    return false
+                }
+            }
+        </script>
+        {% endif %}
+
+        <div style="width: 60%;"> 
+            <table class="table table-dark table-hover text-center">
+                <tr>
+                    <th scope="col">Department Name</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Action</th>
+                </tr>
+                {% for r in data %}
+                <tr>
+                    <td>{{ r.name }}</td>
+                    <td>{{ r.code }}</td>
+                    <td>
+                        <a href="{% url 'updateDept' r.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <div id="deletepopup">
+                        <form action="{% url 'deleteDept' r.id %}" method="POST" style="display: inline;">
+                            <h3>Do You Really Want To Delete</h3>
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                            <a href="{% url 'department' %}" class="btn btn-warning btn-sm">Cancle</a>
+                        </form>
+                    </div>
+                        <button onclick="opendeletepopup()" class="btn btn-danger btn-sm">Delete</button>
+                    
+                    </td>
+                    <script>
+                        function opendeletepopup(){
+                            var popup = document.getElementById("deletepopup")
+                            if (popup.style.display == 'block'){
+                                popup.style.display = 'none'
+                            }else{
+                                popup.style.display = 'block'
+                            }
+
+                        }
+
+                    </script>
+                </tr>
+                {% endfor %}
+            </table>
+
+            {% if updateForm %}
+            <div class="updatepopup">
+
+            <form action="" method="POST">
+                <a href="{% url 'department' %}" class="btn" style="margin-left: 100%; margin-top:-50px; color: white; font-size: 20px;">X</a>
+                <h3 class="text-white text-center">Update Department</h3>
+                {% csrf_token %}
+               {{updateForm.as_p}}
+                <input type="submit" class="btn btn-success" value="Update">
+            </form>
+        </div>
+
+            {% endif %}
+        </div>
+    </div>
+  
+
+{% endblock content %}
